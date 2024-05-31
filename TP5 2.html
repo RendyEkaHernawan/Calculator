@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>Tugas 2 Pertemuan 5</title>
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .posisi{
+        position: absolute;
+        top: 200px;
+        left: 640px;
+    }
+    
+    .button{
+        width: 65px;
+        height: 50px;
+        font-size: 22px;
+        margin: 0px;
+    }
+
+    .x2{
+        width: 132px;
+    }
+    
+    .orange {
+        background-color: orange;
+        color: white;
+    }
+    table{
+        border-collapse: collapse;
+        background-color: black;
+    }
+    .hasil{
+        width: 264px;
+        height: 50px;
+        font-size: 22px;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        text-align: end;
+    }
+</style>
+</head>
+<body>
+
+<div class="posisi">
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" class="hasil" id="result" readonly disabled></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" class="button x2" value="C" onclick="clearResult()"></td>
+            <td><input type="button" class="button" value="&#8592;" onclick="deleteLastCharacter()"></td>
+            <td><input type="button" class="button orange" value="&divide;" onclick="appendToResult('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="7" onclick="appendToResult('7')"></td>
+            <td><input type="button" class="button" value="8" onclick="appendToResult('8')"></td>
+            <td><input type="button" class="button" value="9" onclick="appendToResult('9')"></td>
+            <td><input type="button" class="button orange" value="&times;" onclick="appendToResult('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="4" onclick="appendToResult('4')"></td>
+            <td><input type="button" class="button" value="5" onclick="appendToResult('5')"></td>
+            <td><input type="button" class="button" value="6" onclick="appendToResult('6')"></td>
+            <td><input type="button" class="button orange" value="-" onclick="appendToResult('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="1" onclick="appendToResult('1')"></td>
+            <td><input type="button" class="button" value="2" onclick="appendToResult('2')"></td>
+            <td><input type="button" class="button" value="3" onclick="appendToResult('3')"></td>
+            <td><input type="button" class="button orange" value="+" onclick="appendToResult('+')"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" class="button x2" value="0" onclick="appendToResult('0')"></td>
+            <td><input type="button" class="button" value="." onclick="appendToResult('.')"></td>
+            <td><input type="button" class="button orange" value="=" onclick="calculate()"></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    function appendToResult(value) {
+        document.getElementById('result').value += value;
+    }
+
+    function calculate() {
+        let result = document.getElementById('result').value;
+        try {
+            document.getElementById('result').value = eval(result);
+        } catch (error) {
+            document.getElementById('result').value = 'Error';
+        }
+    }
+
+    function clearResult() {
+        document.getElementById('result').value = '';
+    }
+
+    function deleteLastCharacter() {
+        let currentValue = document.getElementById('result').value;
+        document.getElementById('result').value = currentValue.slice(0, -1);
+    }
+</script>
+
+</body>
+</html>
